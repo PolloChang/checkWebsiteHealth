@@ -1,5 +1,6 @@
 #! /bin/bin
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/games:/home/jameschang/.fzf/bin"
+export basedir="/home/jameschang/Documents/gitContent/jameschang/linux/checkWebsiteHealth"
 #===============================================================================
 #
 #          FILE:  check-website-health.sh
@@ -19,8 +20,8 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/games:/home/jameschang/.fzf/bin"
 #      REVISION:  ---
 #===============================================================================
 
-source ./lib/createSource.sh
-source ./lib/log.sh
+source $basedir/lib/createSource.sh
+source $basedir/lib/log.sh
 
 while read websiteI ; do
 
