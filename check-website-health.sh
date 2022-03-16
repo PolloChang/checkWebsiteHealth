@@ -1,6 +1,6 @@
 #! /bin/bin
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/games:/home/jameschang/.fzf/bin"
-export basedir="/home/jameschang/Documents/gitContent/jameschang/linux/checkWebsiteHealth"
+export basedir="/home/jameschang/Documents/gitContent/jameschang/checkWebsiteHealth"
 #===============================================================================
 #
 #          FILE:  check-website-health.sh
@@ -25,7 +25,7 @@ source $basedir/lib/log.sh
 
 while read websiteI ; do
 
-        export statusN=$(curl --write-out '%{http_code}' --silent --output --connect-time ${connentTime} /dev/null $websiteI)
+        export statusN=$(curl --write-out '%{http_code}' --silent --connect-time $connentTime --output /dev/null $websiteI)
 
         if              
                 [ "${statusN}" == "200" ]; 
