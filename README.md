@@ -22,3 +22,9 @@ localPath=[請輸入你的專案絕對路徑]
 ```properties
 connentTime=3 # 連線逾時設定
 ```
+
+## crontab 設定
+
+```
+   */20 * * * * cd [專案環境目錄]; /bin/bash [專案環境目錄]/check-website-health.sh
+```
