@@ -22,4 +22,6 @@
 chmod +x lib/*.sh
 
 touch config/checkWebsitList.txt
+echo "connentTime=3 " > config/settings.properies
+echo "localPath=[請輸入你的專案絕對路徑]" > projection.properties
 touch log/checkWbsite.log

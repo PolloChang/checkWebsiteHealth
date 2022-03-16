@@ -1,6 +1,11 @@
 #! /bin/bin
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/games:/home/jameschang/.fzf/bin"
-export basedir="/home/jameschang/Documents/gitContent/jameschang/checkWebsiteHealth"
+
+function getProjectConfig {
+    grep "${1}" projection.properties |cut -d'=' -f2
+}
+
+export basedir=$(getProjectConfig 'localPath')  # 專案環境目錄
 #===============================================================================
 #
 #          FILE:  check-website-health.sh
@@ -22,10 +27,11 @@ export basedir="/home/jameschang/Documents/gitContent/jameschang/checkWebsiteHea
 
 source $basedir/lib/createSource.sh
 source $basedir/lib/log.sh
+source $basedir/lib/properties.sh
 
 while read websiteI ; do
 
-        export statusN=$(curl --write-out '%{http_code}' --silent --connect-time $connentTime --output /dev/null $websiteI)
+        export statusN=$(curl --write-out '%{http_code}' --silent --connect-time $(prop 'connentTime') --output /dev/null $websiteI)
 
         if              
                 [ "${statusN}" == "200" ]; 

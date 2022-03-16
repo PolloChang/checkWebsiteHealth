@@ -1,2 +1,4 @@
 log/*.log
 config/checkWebsitList.txt
+config/settings.properies
+projection.properties
