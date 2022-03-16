@@ -25,7 +25,7 @@ source $basedir/lib/log.sh
 
 while read websiteI ; do
 
-        export statusN=$(curl --write-out '%{http_code}' --silent --output /dev/null $websiteI)
+        export statusN=$(curl --write-out '%{http_code}' --silent --output --connect-time ${connentTime} /dev/null $websiteI)
 
         if              
                 [ "${statusN}" == "200" ]; 
@@ -36,7 +36,7 @@ while read websiteI ; do
         else
 
             zc_log WARN "status:$statusN, $websiteI"
-            curl -X POST -H 'Authorization: Bearer MRQcAGYnPOWvUROiEhE4WMn9T6NOYaQx7Xl1NoIxeRs' -F 'message='${websiteI}' is down' https://notify-api.line.me/api/notify
+#            curl -X POST -H 'Authorization: Bearer MRQcAGYnPOWvUROiEhE4WMn9T6NOYaQx7Xl1NoIxeRs' -F 'message='${websiteI}' is down' https://notify-api.line.me/api/notify
         fi
 
 done < $websiteL
